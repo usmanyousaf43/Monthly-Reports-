@@ -1,1 +1,449 @@
-function _0x3c3d(_0xc0a858,_0x482f31){const _0xb3757d=_0xb375();return _0x3c3d=function(_0x3c3dcd,_0x42bd0a){_0x3c3dcd=_0x3c3dcd-0xf6;let _0x4159a0=_0xb3757d[_0x3c3dcd];return _0x4159a0;},_0x3c3d(_0xc0a858,_0x482f31);}const _0x27ef1a=_0x3c3d;(function(_0x11d601,_0x3dee77){const _0x3748e4=_0x3c3d,_0x5eb4f3=_0x11d601();while(!![]){try{const _0x59f94c=parseInt(_0x3748e4(0x184))/0x1+parseInt(_0x3748e4(0xfc))/0x2+-parseInt(_0x3748e4(0x148))/0x3*(-parseInt(_0x3748e4(0x158))/0x4)+-parseInt(_0x3748e4(0x191))/0x5+-parseInt(_0x3748e4(0x126))/0x6+parseInt(_0x3748e4(0x170))/0x7+-parseInt(_0x3748e4(0x14a))/0x8;if(_0x59f94c===_0x3dee77)break;else _0x5eb4f3['push'](_0x5eb4f3['shift']());}catch(_0x208324){_0x5eb4f3['push'](_0x5eb4f3['shift']());}}}(_0xb375,0xf1f2a));let originalData=[],filteredData=[],currentSort={'column':null,'direction':_0x27ef1a(0x156)},monthNames={'month1':null,'month2':null};const fileUpload=document[_0x27ef1a(0x138)](_0x27ef1a(0x181)),downloadSample=document[_0x27ef1a(0x138)](_0x27ef1a(0xf7)),searchInput=document[_0x27ef1a(0x138)](_0x27ef1a(0x15c)),carrierFilter=document['getElementById'](_0x27ef1a(0x16e)),zoneFilter=document[_0x27ef1a(0x138)](_0x27ef1a(0x118)),managerFilter=document[_0x27ef1a(0x138)](_0x27ef1a(0x16b)),exportBtn=document[_0x27ef1a(0x138)](_0x27ef1a(0x13d)),tableBody=document[_0x27ef1a(0x138)](_0x27ef1a(0x17a)),loadingOverlay=document['getElementById'](_0x27ef1a(0x198)),month1Label=document[_0x27ef1a(0x138)]('month1'),month2Label=document[_0x27ef1a(0x138)](_0x27ef1a(0x10f)),month1Header=document[_0x27ef1a(0x138)]('month1-header'),month2Header=document[_0x27ef1a(0x138)]('month2-header'),totalRecords=document[_0x27ef1a(0x138)](_0x27ef1a(0x165)),totalMinutesChange=document[_0x27ef1a(0x138)](_0x27ef1a(0xf6)),totalMarginChange=document[_0x27ef1a(0x138)](_0x27ef1a(0x125)),avgMinutesChange=document[_0x27ef1a(0x138)]('avg-minutes-change'),showingResults=document[_0x27ef1a(0x138)](_0x27ef1a(0x189));document[_0x27ef1a(0x179)](_0x27ef1a(0x171),function(){const _0x3695da=_0x27ef1a;fileUpload['addEventListener'](_0x3695da(0x12c),handleFileUpload),downloadSample[_0x3695da(0x179)](_0x3695da(0x153),downloadSampleFile),searchInput[_0x3695da(0x179)](_0x3695da(0x12a),applyFilters),carrierFilter['addEventListener'](_0x3695da(0x12c),applyFilters),zoneFilter[_0x3695da(0x179)](_0x3695da(0x12c),applyFilters),managerFilter[_0x3695da(0x179)](_0x3695da(0x12c),applyFilters),exportBtn[_0x3695da(0x179)](_0x3695da(0x153),exportResults),document[_0x3695da(0x143)](_0x3695da(0x193))['forEach'](_0x17fd36=>{const _0x46ff98=_0x3695da;_0x17fd36[_0x46ff98(0x179)]('click',()=>{const _0x460a5d=_0x46ff98;currentSort['column']=_0x17fd36[_0x460a5d(0x140)][_0x460a5d(0x160)],currentSort[_0x460a5d(0x12b)]=currentSort['direction']==='asc'?_0x460a5d(0x199):'asc',sortTable(currentSort[_0x460a5d(0x17e)]);});});});function handleFileUpload(_0x240984){const _0x4b3825=_0x27ef1a,_0x523723=_0x240984['target'][_0x4b3825(0x102)][0x0];if(!_0x523723)return;showLoading(!![]);const _0x38df77=new FileReader();_0x38df77[_0x4b3825(0x113)]=function(_0x41355a){const _0x4ad723=_0x4b3825;try{const _0xf6b01b=new Uint8Array(_0x41355a[_0x4ad723(0x18b)][_0x4ad723(0x188)]),_0xba90ed=XLSX[_0x4ad723(0x16f)](_0xf6b01b,{'type':_0x4ad723(0x129)}),_0x3ddc64=_0xba90ed['SheetNames'][0x0],_0x3a90f7=_0xba90ed[_0x4ad723(0x137)][_0x3ddc64],_0x294ab2=XLSX[_0x4ad723(0x19a)]['sheet_to_json'](_0x3a90f7),_0x46cf50=Object[_0x4ad723(0x13b)](_0x294ab2[0x0]||{});monthNames[_0x4ad723(0xfb)]=_0x46cf50[_0x4ad723(0x115)](_0x473a85=>_0x473a85['includes'](_0x4ad723(0x18d)))?.[_0x4ad723(0x164)](_0x4ad723(0x14b),'')||_0x46cf50[_0x4ad723(0x115)](_0x27c5ec=>_0x27c5ec[_0x4ad723(0x133)](/Minutes_(\w+)/))?.[_0x4ad723(0x164)](_0x4ad723(0x11a),'')||_0x4ad723(0x197),monthNames[_0x4ad723(0x10f)]=_0x46cf50['find'](_0x34b9f2=>_0x34b9f2[_0x4ad723(0x186)](_0x4ad723(0x147)))?.[_0x4ad723(0x164)](_0x4ad723(0x112),'')||_0x46cf50[_0x4ad723(0x115)](_0x3da078=>_0x3da078[_0x4ad723(0x133)](/Minutes_(\w+)/)&&_0x3da078!==_0x4ad723(0x11a)+monthNames[_0x4ad723(0xfb)])?.[_0x4ad723(0x164)](_0x4ad723(0x11a),'')||_0x4ad723(0x14f),month1Label[_0x4ad723(0x187)]=monthNames[_0x4ad723(0xfb)],month2Label['textContent']=monthNames[_0x4ad723(0x10f)],month1Header['textContent']=monthNames[_0x4ad723(0xfb)],month2Header[_0x4ad723(0x187)]=monthNames[_0x4ad723(0x10f)],originalData=_0x294ab2[_0x4ad723(0x150)]((_0xa1b99f,_0x491ea0)=>{const _0x222e4a=_0x4ad723,_0x325675=parseFloat(_0xa1b99f[_0x222e4a(0x11a)+monthNames['month1']])||parseFloat(_0xa1b99f['Minutes_Month1'])||0x0,_0x10d0c8=parseFloat(_0xa1b99f[_0x222e4a(0x11a)+monthNames['month2']])||parseFloat(_0xa1b99f[_0x222e4a(0x145)])||0x0,_0x1a67ff=parseFloat(_0xa1b99f[_0x222e4a(0x173)+monthNames['month1']])||parseFloat(_0xa1b99f['Margin_Month1'])||0x0,_0x3acf85=parseFloat(_0xa1b99f[_0x222e4a(0x173)+monthNames['month2']])||parseFloat(_0xa1b99f[_0x222e4a(0x15e)])||0x0,_0x19cd29=parseFloat(_0xa1b99f[_0x222e4a(0x123)+monthNames[_0x222e4a(0xfb)]])||parseFloat(_0xa1b99f[_0x222e4a(0x108)])||0x0,_0x17de66=parseFloat(_0xa1b99f['Revenue_'+monthNames[_0x222e4a(0x10f)]])||parseFloat(_0xa1b99f[_0x222e4a(0x149)])||0x0;return{'id':_0x491ea0,'accountManager':_0xa1b99f[_0x222e4a(0x195)]||'','carrier':_0xa1b99f[_0x222e4a(0x141)]||'','routingZone':_0xa1b99f['Routing\x20Zone']||'','minutesMonth1':_0x325675,'minutesMonth2':_0x10d0c8,'minutesChange':_0x10d0c8-_0x325675,'minutesChangePercent':_0x325675>0x0?(_0x10d0c8-_0x325675)/_0x325675*0x64:0x0,'marginMonth1':_0x1a67ff,'marginMonth2':_0x3acf85,'marginChange':_0x3acf85-_0x1a67ff,'marginChangePercent':_0x1a67ff>0x0?(_0x3acf85-_0x1a67ff)/_0x1a67ff*0x64:0x0,'revenueMonth1':_0x19cd29,'revenueMonth2':_0x17de66};}),populateFilters(),applyFilters(),updateSummary(),updateCharts();}catch(_0xbe4a6e){alert(_0x4ad723(0x136)+_0xbe4a6e['message']);}finally{showLoading(![]);}},_0x38df77[_0x4b3825(0x100)](_0x523723);}function processData(_0x25c157){const _0x54ade1=_0x27ef1a;originalData=_0x25c157[_0x54ade1(0x150)]((_0x2b941c,_0x46b593)=>{const _0x544cef=_0x54ade1,_0x3669a6=parseFloat(_0x2b941c[_0x544cef(0x124)])||0x0,_0x382f05=parseFloat(_0x2b941c['Minutes_Month2'])||0x0,_0xdc7014=parseFloat(_0x2b941c[_0x544cef(0x180)])||0x0,_0xdd901d=parseFloat(_0x2b941c[_0x544cef(0x15e)])||0x0,_0x47ee75=parseFloat(_0x2b941c[_0x544cef(0x108)])||0x0,_0x513af7=parseFloat(_0x2b941c['Revenue_Month2'])||0x0;return{'id':_0x46b593,'accountManager':_0x2b941c['Account\x20Manager\x20Name']||'','carrier':_0x2b941c['Carrier']||'','routingZone':_0x2b941c['Routing\x20Zone']||'','minutesMonth1':_0x3669a6,'minutesMonth2':_0x382f05,'minutesChange':_0x382f05-_0x3669a6,'minutesChangePercent':_0x3669a6>0x0?(_0x382f05-_0x3669a6)/_0x3669a6*0x64:0x0,'marginMonth1':_0xdc7014,'marginMonth2':_0xdd901d,'marginChange':_0xdd901d-_0xdc7014,'marginChangePercent':_0xdc7014>0x0?(_0xdd901d-_0xdc7014)/_0xdc7014*0x64:0x0,'revenueMonth1':_0x47ee75,'revenueMonth2':_0x513af7};}),populateFilters(),applyFilters(),updateSummary(),updateCharts();}function populateFilters(){const _0x3ff91b=_0x27ef1a,_0x3f830e=[...new Set(originalData['map'](_0x1b234c=>_0x1b234c[_0x3ff91b(0x163)]))][_0x3ff91b(0x17f)](Boolean)[_0x3ff91b(0x160)](),_0x27bd49=[...new Set(originalData[_0x3ff91b(0x150)](_0x52ee4f=>_0x52ee4f[_0x3ff91b(0x167)]))][_0x3ff91b(0x17f)](Boolean)[_0x3ff91b(0x160)](),_0x4c20e6=[...new Set(originalData[_0x3ff91b(0x150)](_0x24fd0f=>_0x24fd0f[_0x3ff91b(0x142)]))]['filter'](Boolean)[_0x3ff91b(0x160)]();populateSelect(carrierFilter,_0x3f830e,'All\x20Carriers'),populateSelect(zoneFilter,_0x27bd49,_0x3ff91b(0x116)),populateSelect(managerFilter,_0x4c20e6,_0x3ff91b(0xf8));}function populateSelect(_0x204fa1,_0xc4cdec,_0x1d30f9){const _0x5da05e=_0x27ef1a;_0x204fa1[_0x5da05e(0x169)]=_0x5da05e(0xfa)+_0x1d30f9+_0x5da05e(0x13e),_0xc4cdec[_0x5da05e(0x11e)](_0x49d1e2=>{const _0x32a59d=_0x5da05e,_0x39ee9c=document[_0x32a59d(0x175)](_0x32a59d(0x10d));_0x39ee9c['value']=_0x49d1e2,_0x39ee9c['textContent']=_0x49d1e2,_0x204fa1['appendChild'](_0x39ee9c);});}function applyFilters(){const _0x22184d=_0x27ef1a,_0x9bfa0b=searchInput[_0x22184d(0x11d)]['toLowerCase'](),_0x55326a=carrierFilter[_0x22184d(0x11d)],_0x4b69b1=zoneFilter[_0x22184d(0x11d)],_0x109829=managerFilter[_0x22184d(0x11d)];filteredData=originalData[_0x22184d(0x17f)](_0x23cf78=>{const _0x296db1=_0x22184d,_0x23e334=!_0x9bfa0b||_0x23cf78[_0x296db1(0x163)]['toLowerCase']()['includes'](_0x9bfa0b)||_0x23cf78[_0x296db1(0x142)]['toLowerCase']()[_0x296db1(0x186)](_0x9bfa0b)||_0x23cf78[_0x296db1(0x167)]['toLowerCase']()[_0x296db1(0x186)](_0x9bfa0b),_0x53ffc3=!_0x55326a||_0x23cf78['carrier']===_0x55326a,_0x5a79e4=!_0x4b69b1||_0x23cf78[_0x296db1(0x167)]===_0x4b69b1,_0x59ddb6=!_0x109829||_0x23cf78[_0x296db1(0x142)]===_0x109829;return _0x23e334&&_0x53ffc3&&_0x5a79e4&&_0x59ddb6;}),renderTable(),updateSummary(),updateCharts();}function sortTable(_0x414560){filteredData['sort']((_0x44956e,_0xdf3c06)=>{const _0x5c9013=_0x3c3d;let _0x361b6f=_0x44956e[_0x414560],_0x102b75=_0xdf3c06[_0x414560];if(typeof _0x361b6f===_0x5c9013(0x128)&&typeof _0x102b75===_0x5c9013(0x128))return currentSort[_0x5c9013(0x12b)]===_0x5c9013(0x156)?_0x361b6f-_0x102b75:_0x102b75-_0x361b6f;return _0x361b6f=String(_0x361b6f)['toLowerCase'](),_0x102b75=String(_0x102b75)[_0x5c9013(0x18e)](),currentSort[_0x5c9013(0x12b)]===_0x5c9013(0x156)?_0x361b6f<_0x102b75?-0x1:_0x361b6f>_0x102b75?0x1:0x0:_0x361b6f>_0x102b75?-0x1:_0x361b6f<_0x102b75?0x1:0x0;}),renderTable(),updateSortIcons();}function updateSortIcons(){const _0x3b3a20=_0x27ef1a;document[_0x3b3a20(0x143)]('th[data-sort]\x20.sort-icon')[_0x3b3a20(0x11e)](_0x2a7a11=>{_0x2a7a11['textContent']='↕️';});if(currentSort[_0x3b3a20(0x17e)]){const _0x1a6eba=document[_0x3b3a20(0x104)]('th[data-sort=\x22'+currentSort['column']+'\x22]');if(_0x1a6eba){const _0x50c05b=_0x1a6eba[_0x3b3a20(0x104)](_0x3b3a20(0x109))||document[_0x3b3a20(0x175)](_0x3b3a20(0x105));_0x50c05b[_0x3b3a20(0x127)]=_0x3b3a20(0x106),_0x50c05b[_0x3b3a20(0x187)]=currentSort[_0x3b3a20(0x12b)]==='asc'?'↑':'↓',_0x1a6eba[_0x3b3a20(0x18f)](_0x50c05b);}}}function renderTable(){const _0x303391=_0x27ef1a;tableBody[_0x303391(0x169)]='',filteredData[_0x303391(0x11e)](_0x3f72b9=>{const _0xfa28d3=_0x303391,_0x546a33=document[_0xfa28d3(0x175)]('tr');_0x546a33['innerHTML']=_0xfa28d3(0x119)+_0x3f72b9[_0xfa28d3(0x142)]+_0xfa28d3(0x10b)+_0x3f72b9[_0xfa28d3(0x163)]+_0xfa28d3(0x10b)+_0x3f72b9[_0xfa28d3(0x167)]+_0xfa28d3(0x10b)+formatNumber(_0x3f72b9[_0xfa28d3(0x117)])+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>$'+formatNumber(_0x3f72b9[_0xfa28d3(0x151)])+_0xfa28d3(0x194)+_0x3f72b9[_0xfa28d3(0x182)]['toFixed'](0x4)+_0xfa28d3(0x18a)+formatChange(_0x3f72b9[_0xfa28d3(0x190)])+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22comparison\x20bold\x22>'+formatPercentage(_0x3f72b9[_0xfa28d3(0x152)])+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22comparison\x20bold\x22>$'+formatChange(_0x3f72b9[_0xfa28d3(0x139)])+_0xfa28d3(0x10b)+formatNumber(_0x3f72b9[_0xfa28d3(0x11c)])+_0xfa28d3(0x194)+formatNumber(_0x3f72b9[_0xfa28d3(0x13a)])+_0xfa28d3(0x194)+_0x3f72b9[_0xfa28d3(0x168)][_0xfa28d3(0x178)](0x4)+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20',tableBody[_0xfa28d3(0x18f)](_0x546a33);}),showingResults['textContent']=_0x303391(0x134)+filteredData[_0x303391(0x10a)]+'\x20of\x20'+originalData['length']+_0x303391(0x183);}function updateSummary(){const _0x4f116d=_0x27ef1a,_0xa204f4=filteredData[_0x4f116d(0x101)]((_0x5dec2b,_0x34352b)=>_0x5dec2b+_0x34352b['minutesChange'],0x0),_0x3a455e=filteredData[_0x4f116d(0x101)]((_0x46e3b8,_0x26d3a4)=>_0x46e3b8+_0x26d3a4[_0x4f116d(0x139)],0x0),_0x4eeeda=filteredData[_0x4f116d(0x10a)]>0x0?filteredData[_0x4f116d(0x101)]((_0x5886f0,_0x4e528b)=>_0x5886f0+_0x4e528b[_0x4f116d(0x152)],0x0)/filteredData[_0x4f116d(0x10a)]:0x0;totalRecords[_0x4f116d(0x187)]=filteredData[_0x4f116d(0x10a)],totalMinutesChange[_0x4f116d(0x187)]=formatChange(_0xa204f4),totalMinutesChange[_0x4f116d(0x127)]=getChangeClass(_0xa204f4),totalMarginChange[_0x4f116d(0x187)]='$'+formatChange(_0x3a455e),totalMarginChange[_0x4f116d(0x127)]=getChangeClass(_0x3a455e),avgMinutesChange[_0x4f116d(0x187)]=formatPercentage(_0x4eeeda),avgMinutesChange[_0x4f116d(0x127)]=getChangeClass(_0x4eeeda);}let minutesCarrierChart=null,marginCarrierChart=null,minutesZoneChart=null,marginZoneChart=null;function _0xb375(){const _0x651d6a=['find','All\x20Zones','minutesMonth1','zone-filter','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','Minutes_','toISOString','minutesMonth2','value','forEach','Afg_Roshan_All','parsed','from','\x20-\x20','Revenue_','Minutes_Month1','total-margin-change','4824942dGHAOC','className','number','array','input','direction','change','rgba(0,0,0,0.8)','toggle','Margin\x20Change:\x20$','Margin\x20Inc/Dec\x20','Rated\x20Minutes\x20','top','match','Showing\x20','classList','Error\x20reading\x20file:\x20','Sheets','getElementById','marginChange','marginMonth2','keys','#F44336','export-btn','</option>','#2196F3','dataset','Carrier','accountManager','querySelectorAll','minutes-carrier-chart','Minutes_Month2','CHAT\x20LINK','Month2','491844FwqbBe','Revenue_Month2','14225400zAcdiB','_Month1','abs','NumberFormat','Tajikistan_All','Jul','map','marginMonth1','minutesChangePercent','click','No\x20data\x20to\x20export','VENTATEL','asc','Mins\x20Inc/Dec\x20','4MDcbqn','John\x20Doe','bar','margin-carrier-chart','search-input','get','Margin_Month2','Nigeria_All','sort','slice','book_append_sheet','carrier','replace','total-records','entries','routingZone','revenueMonth2','innerHTML','json_to_sheet','manager-filter','Spain_All','\x20to\x20','carrier-filter','read','11135782fXiVSn','DOMContentLoaded','#d3d3d3','Margin_','TELIA','createElement','Jane\x20Smith','WANANACHI\x20TELECOM','toFixed','addEventListener','table-body','writeFile','CDR\x20Data','Mins\x20Change\x20(','column','filter','Margin_Month1','file-upload','revenueMonth1','\x20results','455098dyPxCJ','Mins\x20Change:\x20','includes','textContent','result','showing-results','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22comparison\x20bold\x22>','target','Mins\x20Inc/Dec\x20%\x20','Month1','toLowerCase','appendChild','minutesChange','2212450TGiObg','destroy','th[data-sort]','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>$','Account\x20Manager\x20Name','has','Jun','loading-overlay','desc','utils','CDR\x20Comparison\x20Results','total-minutes-change','download-sample','All\x20Managers','positive-change','<option\x20value=\x22\x22>','month1','3611936mnyzUs','negative-change','Margin\x20Change\x20(','getContext','readAsArrayBuffer','reduce','files','neutral-change','querySelector','span','sort-icon','set','Revenue_Month1','.sort-icon','length','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','Total\x20Margin\x20','option','Alice\x20Brown','month2','rgba(0,0,0,0.1)','round','_Month2','onload','book_new'];_0xb375=function(){return _0x651d6a;};return _0xb375();}function updateCharts(){updateMinutesCarrierChart(),updateMarginCarrierChart(),updateMinutesZoneChart(),updateMarginZoneChart();}function updateMinutesCarrierChart(){const _0x347639=_0x27ef1a,_0x5abe2f=document[_0x347639(0x138)](_0x347639(0x144))[_0x347639(0xff)]('2d'),_0xa90191=aggregateByCarrier(filteredData,'minutesChange'),_0x25f6cc=_0xa90191[_0x347639(0x161)](0x0,0xa),_0x1df05a=_0x25f6cc[_0x347639(0x150)](_0x17bbd4=>_0x17bbd4[_0x347639(0x163)]),_0x5d7696=_0x25f6cc['map'](_0x620095=>_0x620095[_0x347639(0x11d)]),_0x5d1583=_0x5d7696[_0x347639(0x150)](_0x9f647e=>_0x9f647e>0x0?_0x347639(0x13c):_0x9f647e<0x0?_0x347639(0x13f):_0x347639(0x172));if(minutesCarrierChart)minutesCarrierChart[_0x347639(0x192)]();minutesCarrierChart=new Chart(_0x5abe2f,{'type':_0x347639(0x15a),'data':{'labels':_0x1df05a,'datasets':[{'label':_0x347639(0x17d)+monthNames[_0x347639(0xfb)]+_0x347639(0x16d)+monthNames['month2']+')','data':_0x5d7696,'backgroundColor':_0x5d1583,'borderColor':_0x5d1583,'borderWidth':0x1,'borderRadius':0x5}]},'options':{'responsive':!![],'maintainAspectRatio':![],'plugins':{'legend':{'display':!![],'position':_0x347639(0x132),'labels':{'font':{'size':0xe}}},'tooltip':{'backgroundColor':_0x347639(0x12d),'titleFont':{'size':0xe},'bodyFont':{'size':0xc},'callbacks':{'label':_0x47bdcd=>_0x347639(0x185)+(_0x47bdcd[_0x347639(0x120)]['y']>=0x0?'+':'')+formatNumber(_0x47bdcd[_0x347639(0x120)]['y'])}}},'scales':{'y':{'beginAtZero':!![],'grid':{'color':_0x347639(0x110)},'ticks':{'font':{'size':0xc},'callback':_0x5d8034=>formatNumber(_0x5d8034)}},'x':{'grid':{'display':![]},'ticks':{'font':{'size':0xc},'maxRotation':0x2d,'minRotation':0x2d}}}}});}function updateMarginCarrierChart(){const _0x4af258=_0x27ef1a,_0x7491d2=document['getElementById'](_0x4af258(0x15b))['getContext']('2d'),_0x5b80c2=aggregateByCarrier(filteredData,_0x4af258(0x139)),_0x11dde7=_0x5b80c2[_0x4af258(0x161)](0x0,0xa),_0x15ed8e=_0x11dde7[_0x4af258(0x150)](_0x448764=>_0x448764[_0x4af258(0x163)]),_0x23d33d=_0x11dde7['map'](_0x14085e=>_0x14085e[_0x4af258(0x11d)]),_0x23f07c=_0x23d33d[_0x4af258(0x150)](_0x5bddbf=>_0x5bddbf>0x0?_0x4af258(0x13c):_0x5bddbf<0x0?_0x4af258(0x13f):'#d3d3d3');if(marginCarrierChart)marginCarrierChart[_0x4af258(0x192)]();marginCarrierChart=new Chart(_0x7491d2,{'type':_0x4af258(0x15a),'data':{'labels':_0x15ed8e,'datasets':[{'label':_0x4af258(0xfe)+monthNames[_0x4af258(0xfb)]+_0x4af258(0x16d)+monthNames[_0x4af258(0x10f)]+')','data':_0x23d33d,'backgroundColor':_0x23f07c,'borderColor':_0x23f07c,'borderWidth':0x1,'borderRadius':0x5}]},'options':{'responsive':!![],'maintainAspectRatio':![],'plugins':{'legend':{'display':!![],'position':_0x4af258(0x132),'labels':{'font':{'size':0xe}}},'tooltip':{'backgroundColor':'rgba(0,0,0,0.8)','titleFont':{'size':0xe},'bodyFont':{'size':0xc},'callbacks':{'label':_0xb9d842=>_0x4af258(0x12f)+(_0xb9d842['parsed']['y']>=0x0?'+':'')+formatNumber(Math[_0x4af258(0x14c)](_0xb9d842[_0x4af258(0x120)]['y']))}}},'scales':{'y':{'beginAtZero':!![],'grid':{'color':_0x4af258(0x110)},'ticks':{'font':{'size':0xc},'callback':_0x59a0b5=>'$'+formatNumber(_0x59a0b5)}},'x':{'grid':{'display':![]},'ticks':{'font':{'size':0xc},'maxRotation':0x2d,'minRotation':0x2d}}}}});}function updateMinutesZoneChart(){const _0xecb709=_0x27ef1a,_0x121ff3=document[_0xecb709(0x138)]('minutes-zone-chart')[_0xecb709(0xff)]('2d'),_0x40d992=aggregateByZone(filteredData,_0xecb709(0x190)),_0x4bce97=_0x40d992['slice'](0x0,0xa),_0x51d810=_0x4bce97['map'](_0x3e7b21=>_0x3e7b21['zone']),_0x154d0f=_0x4bce97[_0xecb709(0x150)](_0xe10576=>_0xe10576['value']),_0x2f6e06=_0x154d0f['map'](_0x4f1bb8=>_0x4f1bb8>0x0?_0xecb709(0x13c):_0x4f1bb8<0x0?'#2196F3':_0xecb709(0x172));if(minutesZoneChart)minutesZoneChart['destroy']();minutesZoneChart=new Chart(_0x121ff3,{'type':_0xecb709(0x15a),'data':{'labels':_0x51d810,'datasets':[{'label':_0xecb709(0x17d)+monthNames[_0xecb709(0xfb)]+_0xecb709(0x16d)+monthNames[_0xecb709(0x10f)]+')','data':_0x154d0f,'backgroundColor':_0x2f6e06,'borderColor':_0x2f6e06,'borderWidth':0x1,'borderRadius':0x5}]},'options':{'responsive':!![],'maintainAspectRatio':![],'plugins':{'legend':{'display':!![],'position':_0xecb709(0x132),'labels':{'font':{'size':0xe}}},'tooltip':{'backgroundColor':_0xecb709(0x12d),'titleFont':{'size':0xe},'bodyFont':{'size':0xc},'callbacks':{'label':_0x231de7=>_0xecb709(0x185)+(_0x231de7[_0xecb709(0x120)]['y']>=0x0?'+':'')+formatNumber(_0x231de7['parsed']['y'])}}},'scales':{'y':{'beginAtZero':!![],'grid':{'color':'rgba(0,0,0,0.1)'},'ticks':{'font':{'size':0xc},'callback':_0x9b655=>formatNumber(_0x9b655)}},'x':{'grid':{'display':![]},'ticks':{'font':{'size':0xc},'maxRotation':0x2d,'minRotation':0x2d}}}}});}function updateMarginZoneChart(){const _0x9c1f50=_0x27ef1a,_0x58bd1c=document[_0x9c1f50(0x138)]('margin-zone-chart')['getContext']('2d'),_0x405e13=aggregateByZone(filteredData,'marginChange'),_0x345cfd=_0x405e13[_0x9c1f50(0x161)](0x0,0xa),_0x81a843=_0x345cfd[_0x9c1f50(0x150)](_0x2741a8=>_0x2741a8['zone']),_0x1a8c0c=_0x345cfd[_0x9c1f50(0x150)](_0x1ff3a4=>_0x1ff3a4[_0x9c1f50(0x11d)]),_0x269c03=_0x1a8c0c[_0x9c1f50(0x150)](_0x5213d4=>_0x5213d4>0x0?_0x9c1f50(0x13c):_0x5213d4<0x0?_0x9c1f50(0x13f):_0x9c1f50(0x172));if(marginZoneChart)marginZoneChart[_0x9c1f50(0x192)]();marginZoneChart=new Chart(_0x58bd1c,{'type':_0x9c1f50(0x15a),'data':{'labels':_0x81a843,'datasets':[{'label':'Margin\x20Change\x20('+monthNames[_0x9c1f50(0xfb)]+'\x20to\x20'+monthNames[_0x9c1f50(0x10f)]+')','data':_0x1a8c0c,'backgroundColor':_0x269c03,'borderColor':_0x269c03,'borderWidth':0x1,'borderRadius':0x5}]},'options':{'responsive':!![],'maintainAspectRatio':![],'plugins':{'legend':{'display':!![],'position':_0x9c1f50(0x132),'labels':{'font':{'size':0xe}}},'tooltip':{'backgroundColor':'rgba(0,0,0,0.8)','titleFont':{'size':0xe},'bodyFont':{'size':0xc},'callbacks':{'label':_0x280288=>_0x9c1f50(0x12f)+(_0x280288['parsed']['y']>=0x0?'+':'')+formatNumber(Math[_0x9c1f50(0x14c)](_0x280288[_0x9c1f50(0x120)]['y']))}}},'scales':{'y':{'beginAtZero':!![],'grid':{'color':_0x9c1f50(0x110)},'ticks':{'font':{'size':0xc},'callback':_0x1e1e56=>'$'+formatNumber(_0x1e1e56)}},'x':{'grid':{'display':![]},'ticks':{'font':{'size':0xc},'maxRotation':0x2d,'minRotation':0x2d}}}}});}function aggregateByCarrier(_0x2b7318,_0x4509c6){const _0x32c396=_0x27ef1a,_0x3c74e4=new Map();return _0x2b7318[_0x32c396(0x11e)](_0x3e320d=>{const _0x5017cb=_0x32c396,_0x87956f=_0x3e320d['carrier'];_0x3c74e4[_0x5017cb(0x196)](_0x87956f)?_0x3c74e4[_0x5017cb(0x107)](_0x87956f,_0x3c74e4['get'](_0x87956f)+_0x3e320d[_0x4509c6]):_0x3c74e4['set'](_0x87956f,_0x3e320d[_0x4509c6]);}),Array[_0x32c396(0x121)](_0x3c74e4[_0x32c396(0x166)]())['map'](([_0x1427bd,_0x3d8904])=>({'carrier':_0x1427bd,'value':_0x3d8904}))[_0x32c396(0x160)]((_0x1dbe62,_0x6aa0f9)=>Math[_0x32c396(0x14c)](_0x6aa0f9[_0x32c396(0x11d)])-Math[_0x32c396(0x14c)](_0x1dbe62['value']));}function aggregateByZone(_0x238518,_0x36d2a4){const _0xa6a148=_0x27ef1a,_0x56b98b=new Map();return _0x238518[_0xa6a148(0x11e)](_0x889d58=>{const _0x120e6d=_0xa6a148,_0x2f5a1b=_0x889d58[_0x120e6d(0x167)];_0x56b98b[_0x120e6d(0x196)](_0x2f5a1b)?_0x56b98b[_0x120e6d(0x107)](_0x2f5a1b,_0x56b98b[_0x120e6d(0x15d)](_0x2f5a1b)+_0x889d58[_0x36d2a4]):_0x56b98b[_0x120e6d(0x107)](_0x2f5a1b,_0x889d58[_0x36d2a4]);}),Array[_0xa6a148(0x121)](_0x56b98b[_0xa6a148(0x166)]())['map'](([_0xfa429e,_0x1b7b36])=>({'zone':_0xfa429e,'value':_0x1b7b36}))[_0xa6a148(0x160)]((_0x492f5e,_0x531eb7)=>Math[_0xa6a148(0x14c)](_0x531eb7[_0xa6a148(0x11d)])-Math['abs'](_0x492f5e[_0xa6a148(0x11d)]));}function formatNumber(_0x478580){const _0x36ff98=_0x27ef1a;return _0x478580%0x1===0x0?new Intl[(_0x36ff98(0x14d))]()['format'](Math[_0x36ff98(0x111)](_0x478580)):_0x478580[_0x36ff98(0x178)](0x2);}function formatChange(_0x58e6b3){const _0x3b89ce=_0x27ef1a,_0x2f36a0=_0x58e6b3%0x1===0x0?formatNumber(Math[_0x3b89ce(0x14c)](_0x58e6b3)):Math['abs'](_0x58e6b3)[_0x3b89ce(0x178)](0x2);return _0x58e6b3>=0x0?'+'+_0x2f36a0:'-'+_0x2f36a0;}function formatPercentage(_0x1b4744){return''+(_0x1b4744>=0x0?'+':'')+_0x1b4744['toFixed'](0x1)+'%';}function getChangeClass(_0x238712){const _0x10ef6b=_0x27ef1a;return _0x238712>0x0?_0x10ef6b(0xf9):_0x238712<0x0?_0x10ef6b(0xfd):_0x10ef6b(0x103);}function showLoading(_0x1b2394){const _0x12e712=_0x27ef1a;loadingOverlay[_0x12e712(0x135)][_0x12e712(0x12e)]('hidden',!_0x1b2394);}function downloadSampleFile(){const _0x4655c0=_0x27ef1a,_0x40caa5=[{'Account\x20Manager\x20Name':_0x4655c0(0x159),'Carrier':_0x4655c0(0x174),'Routing\x20Zone':_0x4655c0(0x14e),'Minutes_Jun':0x2e14,'Margin_Jun':0x24e,'Revenue_Jun':0.14},{'Account\x20Manager\x20Name':_0x4655c0(0x176),'Carrier':_0x4655c0(0x155),'Routing\x20Zone':_0x4655c0(0x14e),'Minutes_Jun':0x68f,'Margin_Jun':0x7,'Revenue_Jun':0.084},{'Account\x20Manager\x20Name':_0x4655c0(0x159),'Carrier':_0x4655c0(0x177),'Routing\x20Zone':'Nigeria_All','Minutes_Jun':0x32e8,'Margin_Jun':0x73,'Revenue_Jun':0.0562},{'Account\x20Manager\x20Name':_0x4655c0(0x10e),'Carrier':_0x4655c0(0x146),'Routing\x20Zone':_0x4655c0(0x11f),'Minutes_Jun':0x1ad37,'Margin_Jun':0x670,'Revenue_Jun':0.13},{'Account\x20Manager\x20Name':'John\x20Doe','Carrier':'TELIA','Routing\x20Zone':_0x4655c0(0x14e),'Minutes_Jul':0xdfd1,'Margin_Jul':0x6b7,'Revenue_Jul':0.12},{'Account\x20Manager\x20Name':_0x4655c0(0x176),'Carrier':_0x4655c0(0x155),'Routing\x20Zone':_0x4655c0(0x14e),'Minutes_Jul':0xa3eb,'Margin_Jul':0x832,'Revenue_Jul':0.14},{'Account\x20Manager\x20Name':_0x4655c0(0x159),'Carrier':_0x4655c0(0x177),'Routing\x20Zone':_0x4655c0(0x15f),'Minutes_Jul':0x1f56e,'Margin_Jul':0x342,'Revenue_Jul':0.0869},{'Account\x20Manager\x20Name':_0x4655c0(0x10e),'Carrier':'CHAT\x20LINK','Routing\x20Zone':_0x4655c0(0x16c),'Minutes_Jul':0x20797,'Margin_Jul':0x1ff,'Revenue_Jul':0.0136}],_0x3179ae=XLSX[_0x4655c0(0x19a)][_0x4655c0(0x16a)](_0x40caa5),_0x144390=XLSX['utils']['book_new']();XLSX['utils'][_0x4655c0(0x162)](_0x144390,_0x3179ae,_0x4655c0(0x17c)),XLSX[_0x4655c0(0x17b)](_0x144390,'cdr_sample_data.xlsx');}function exportResults(){const _0x1414d6=_0x27ef1a;if(filteredData[_0x1414d6(0x10a)]===0x0){alert(_0x1414d6(0x154));return;}const _0x4a4c8b=filteredData[_0x1414d6(0x150)](_0x2e7567=>({'Account\x20Manager':_0x2e7567[_0x1414d6(0x142)],'Carrier':_0x2e7567['carrier'],'Routing\x20Zone':_0x2e7567[_0x1414d6(0x167)],['Rated\x20Minutes\x20'+monthNames['month1']]:_0x2e7567['minutesMonth1'],['Total\x20Margin\x20'+monthNames[_0x1414d6(0xfb)]]:_0x2e7567['marginMonth1'],['Rated\x20Min\x20Revenue\x20'+monthNames['month1']]:_0x2e7567[_0x1414d6(0x182)],[_0x1414d6(0x157)+monthNames[_0x1414d6(0x10f)]+_0x1414d6(0x122)+monthNames[_0x1414d6(0xfb)]]:_0x2e7567[_0x1414d6(0x190)],[_0x1414d6(0x18c)+monthNames[_0x1414d6(0x10f)]+_0x1414d6(0x122)+monthNames['month1']]:_0x2e7567[_0x1414d6(0x152)][_0x1414d6(0x178)](0x2)+'%',[_0x1414d6(0x130)+monthNames[_0x1414d6(0x10f)]+_0x1414d6(0x122)+monthNames['month1']]:_0x2e7567[_0x1414d6(0x139)],[_0x1414d6(0x131)+monthNames[_0x1414d6(0x10f)]]:_0x2e7567[_0x1414d6(0x11c)],[_0x1414d6(0x10c)+monthNames[_0x1414d6(0x10f)]]:_0x2e7567[_0x1414d6(0x13a)],['Rated\x20Min\x20Revenue\x20'+monthNames[_0x1414d6(0x10f)]]:_0x2e7567[_0x1414d6(0x168)]})),_0x4ecefb=XLSX['utils'][_0x1414d6(0x16a)](_0x4a4c8b),_0x3ff4a3=XLSX['utils'][_0x1414d6(0x114)]();XLSX[_0x1414d6(0x19a)][_0x1414d6(0x162)](_0x3ff4a3,_0x4ecefb,_0x1414d6(0x19b));const _0x3b817e=new Date()[_0x1414d6(0x11b)]()[_0x1414d6(0x161)](0x0,0x13)[_0x1414d6(0x164)](/:/g,'-');XLSX[_0x1414d6(0x17b)](_0x3ff4a3,'cdr_comparison_results_'+_0x3b817e+'.xlsx');}
+let originalData = [];
+let filteredData = [];
+let currentSort = { column: null, direction: 'asc' };
+let monthNames = { month1: null, month2: null };
+
+const fileUpload = document.getElementById('file-upload');
+const downloadSample = document.getElementById('download-sample');
+const searchInput = document.getElementById('search-input');
+const carrierFilter = document.getElementById('carrier-filter');
+const zoneFilter = document.getElementById('zone-filter');
+const managerFilter = document.getElementById('manager-filter');
+const marginFilter = document.getElementById('margin-filter');
+const exportBtn = document.getElementById('export-btn');
+const tableBody = document.getElementById('table-body');
+const loadingOverlay = document.getElementById('loading-overlay');
+const month1Label = document.getElementById('month1');
+const month2Label = document.getElementById('month2');
+const month1Header = document.getElementById('month1-header');
+const month2Header = document.getElementById('month2-header');
+
+const totalRecords = document.getElementById('total-records');
+const totalMinutesChange = document.getElementById('total-minutes-change');
+const totalMarginChange = document.getElementById('total-margin-change');
+const avgMinutesChange = document.getElementById('avg-minutes-change');
+const showingResults = document.getElementById('showing-results');
+
+document.addEventListener('DOMContentLoaded', function() {
+    fileUpload.addEventListener('change', handleFileUpload);
+    downloadSample.addEventListener('click', downloadSampleFile);
+    searchInput.addEventListener('input', applyFilters);
+    carrierFilter.addEventListener('change', applyFilters);
+    zoneFilter.addEventListener('change', applyFilters);
+    managerFilter.addEventListener('change', applyFilters);
+    marginFilter.addEventListener('change', applyFilters);
+    exportBtn.addEventListener('click', exportResults);
+    
+    document.querySelectorAll('th[data-sort]').forEach(header => {
+        header.addEventListener('click', () => {
+            currentSort.column = header.dataset.sort;
+            currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            sortTable(currentSort.column);
+        });
+    });
+});
+
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    showLoading(true);
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
+            
+            // Auto-detect month names from column headers
+            const headers = Object.keys(jsonData[0] || {});
+            monthNames.month1 = headers.find(h => h.includes('Month1'))?.replace('_Month1', '') || headers.find(h => h.match(/Minutes_(\w+)/))?.replace('Minutes_', '') || 'Jun';
+            monthNames.month2 = headers.find(h => h.includes('Month2'))?.replace('_Month2', '') || headers.find(h => h.match(/Minutes_(\w+)/) && h !== `Minutes_${monthNames.month1}`)?.replace('Minutes_', '') || 'Jul';
+            month1Label.textContent = monthNames.month1;
+            month2Label.textContent = monthNames.month2;
+            month1Header.textContent = monthNames.month1;
+            month2Header.textContent = monthNames.month2;
+            
+            // Map uploaded data to expected structure with proper decimal handling
+            originalData = jsonData.map((row, index) => {
+                const minutesMonth1 = parseFloat(row[`Minutes_${monthNames.month1}`]) || parseFloat(row['Minutes_Month1']) || 0;
+                const minutesMonth2 = parseFloat(row[`Minutes_${monthNames.month2}`]) || parseFloat(row['Minutes_Month2']) || 0;
+                const marginMonth1 = parseFloat(row[`Margin_${monthNames.month1}`]) || parseFloat(row['Margin_Month1']) || 0;
+                const marginMonth2 = parseFloat(row[`Margin_${monthNames.month2}`]) || parseFloat(row['Margin_Month2']) || 0;
+                const revenueMonth1 = parseFloat(row[`Revenue_${monthNames.month1}`]) || parseFloat(row['Revenue_Month1']) || 0;
+                const revenueMonth2 = parseFloat(row[`Revenue_${monthNames.month2}`]) || parseFloat(row['Revenue_Month2']) || 0;
+                
+                return {
+                    id: index,
+                    accountManager: row['Account Manager Name'] || '',
+                    carrier: row['Carrier'] || '',
+                    routingZone: row['Routing Zone'] || '',
+                    minutesMonth1: minutesMonth1,
+                    minutesMonth2: minutesMonth2,
+                    minutesChange: minutesMonth2 - minutesMonth1,
+                    minutesChangePercent: minutesMonth1 > 0 ? ((minutesMonth2 - minutesMonth1) / minutesMonth1) * 100 : 0,
+                    marginMonth1: marginMonth1,
+                    marginMonth2: marginMonth2,
+                    marginChange: marginMonth2 - marginMonth1,
+                    marginChangePercent: marginMonth1 > 0 ? ((marginMonth2 - marginMonth1) / marginMonth1) * 100 : 0,
+                    revenueMonth1: revenueMonth1,
+                    revenueMonth2: revenueMonth2
+                };
+            });
+            
+            populateFilters();
+            applyFilters();
+            updateSummary();
+            updateCharts();
+        } catch (error) {
+            alert('Error reading file: ' + error.message);
+        } finally {
+            showLoading(false);
+        }
+    };
+    
+    reader.readAsArrayBuffer(file);
+}
+
+function processData(data) {
+    originalData = data.map((row, index) => {
+        const minutesMonth1 = parseFloat(row['Minutes_Month1']) || 0;
+        const minutesMonth2 = parseFloat(row['Minutes_Month2']) || 0;
+        const marginMonth1 = parseFloat(row['Margin_Month1']) || 0;
+        const marginMonth2 = parseFloat(row['Margin_Month2']) || 0;
+        const revenueMonth1 = parseFloat(row['Revenue_Month1']) || 0;
+        const revenueMonth2 = parseFloat(row['Revenue_Month2']) || 0;
+        
+        return {
+            id: index,
+            accountManager: row['Account Manager Name'] || '',
+            carrier: row['Carrier'] || '',
+            routingZone: row['Routing Zone'] || '',
+            minutesMonth1: minutesMonth1,
+            minutesMonth2: minutesMonth2,
+            minutesChange: minutesMonth2 - minutesMonth1,
+            minutesChangePercent: minutesMonth1 > 0 ? ((minutesMonth2 - minutesMonth1) / minutesMonth1) * 100 : 0,
+            marginMonth1: marginMonth1,
+            marginMonth2: marginMonth2,
+            marginChange: marginMonth2 - marginMonth1,
+            marginChangePercent: marginMonth1 > 0 ? ((marginMonth2 - marginMonth1) / marginMonth1) * 100 : 0,
+            revenueMonth1: revenueMonth1,
+            revenueMonth2: revenueMonth2
+        };
+    });
+    
+    populateFilters();
+    applyFilters();
+    updateSummary();
+    updateCharts();
+}
+
+function populateFilters() {
+    const carriers = [...new Set(originalData.map(row => row.carrier))].filter(Boolean).sort();
+    const zones = [...new Set(originalData.map(row => row.routingZone))].filter(Boolean).sort();
+    const managers = [...new Set(originalData.map(row => row.accountManager))].filter(Boolean).sort();
+    
+    populateSelect(carrierFilter, carriers, 'All Carriers');
+    populateSelect(zoneFilter, zones, 'All Zones');
+    populateSelect(managerFilter, managers, 'All Managers');
+}
+
+function populateSelect(selectElement, options, defaultText) {
+    selectElement.innerHTML = `<option value="">${defaultText}</option>`;
+    options.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option;
+        optionElement.textContent = option;
+        selectElement.appendChild(optionElement);
+    });
+}
+
+function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const carrierValue = carrierFilter.value;
+    const zoneValue = zoneFilter.value;
+    const managerValue = managerFilter.value;
+    const marginValue = marginFilter.value;
+    
+    filteredData = originalData.filter(row => {
+        const matchesSearch = !searchTerm || 
+            row.carrier.toLowerCase().includes(searchTerm) || 
+            row.accountManager.toLowerCase().includes(searchTerm) || 
+            row.routingZone.toLowerCase().includes(searchTerm);
+        const matchesCarrier = !carrierValue || row.carrier === carrierValue;
+        const matchesZone = !zoneValue || row.routingZone === zoneValue;
+        const matchesManager = !managerValue || row.accountManager === managerValue;
+        const matchesMargin = !marginValue || 
+            (marginValue === "increase" && row.marginChange > 0) || 
+            (marginValue === "decrease" && row.marginChange < 0);
+        
+        return matchesSearch && matchesCarrier && matchesZone && matchesManager && matchesMargin;
+    });
+    
+    renderTable();
+    updateSummary();
+    updateCharts();
+}
+
+function sortTable(column) {
+    filteredData.sort((a, b) => {
+        let aVal = a[column];
+        let bVal = b[column];
+        
+        if (typeof aVal === 'number' && typeof bVal === 'number') {
+            return currentSort.direction === 'asc' ? aVal - bVal : bVal - aVal;
+        }
+        
+        aVal = String(aVal).toLowerCase();
+        bVal = String(bVal).toLowerCase();
+        
+        return currentSort.direction === 'asc' ? 
+            aVal < bVal ? -1 : aVal > bVal ? 1 : 0 : 
+            aVal > bVal ? -1 : aVal < bVal ? 1 : 0;
+    });
+    
+    renderTable();
+    updateSortIcons();
+}
+
+function updateSortIcons() {
+    document.querySelectorAll('th[data-sort] .sort-icon').forEach(icon => {
+        icon.textContent = '↕️';
+    });
+    
+    if (currentSort.column) {
+        const activeHeader = document.querySelector(`th[data-sort="${currentSort.column}"]`);
+        if (activeHeader) {
+            const icon = activeHeader.querySelector('.sort-icon') || document.createElement('span');
+            icon.className = 'sort-icon';
+            icon.textContent = currentSort.direction === 'asc' ? '↑' : '↓';
+            activeHeader.appendChild(icon);
+        }
+    }
+}
+
+function renderTable() {
+    tableBody.innerHTML = '';
+    
+    filteredData.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${row.accountManager}</td>
+            <td>${row.carrier}</td>
+            <td>${row.routingZone}</td>
+            <td>${formatNumber(row.minutesMonth1)}</td>
+            <td>$${formatNumber(row.marginMonth1)}</td>
+            <td>$${row.revenueMonth1.toFixed(4)}</td>
+            <td class="comparison bold">${formatChange(row.minutesChange)}</td>
+            <td class="comparison bold">${formatPercentage(row.minutesChangePercent)}</td>
+            <td class="comparison bold">$${formatChange(row.marginChange)}</td>
+            <td>${formatNumber(row.minutesMonth2)}</td>
+            <td>$${formatNumber(row.marginMonth2)}</td>
+            <td>$${row.revenueMonth2.toFixed(4)}</td>
+        `;
+        tableBody.appendChild(tr);
+    });
+    
+    showingResults.textContent = `Showing ${filteredData.length} of ${originalData.length} results`;
+}
+
+function updateSummary() {
+    const totalMinutes = filteredData.reduce((sum, row) => sum + row.minutesChange, 0);
+    const totalMargin = filteredData.reduce((sum, row) => sum + row.marginChange, 0);
+    const avgMinutesChangeValue = filteredData.length > 0 ? 
+        filteredData.reduce((sum, row) => sum + row.minutesChangePercent, 0) / filteredData.length : 0;
+    
+    totalRecords.textContent = filteredData.length;
+    totalMinutesChange.textContent = formatChange(totalMinutes);
+    totalMinutesChange.className = getChangeClass(totalMinutes);
+    totalMarginChange.textContent = '$' + formatChange(totalMargin);
+    totalMarginChange.className = getChangeClass(totalMargin);
+    avgMinutesChange.textContent = formatPercentage(avgMinutesChangeValue);
+    avgMinutesChange.className = getChangeClass(avgMinutesChangeValue);
+}
+
+let minutesCarrierChart = null;
+let marginCarrierChart = null;
+let minutesZoneChart = null;
+let marginZoneChart = null;
+
+function updateCharts() {
+    updateMinutesCarrierChart();
+    updateMarginCarrierChart();
+    updateMinutesZoneChart();
+    updateMarginZoneChart();
+}
+
+function updateMinutesCarrierChart() {
+    const ctx = document.getElementById('minutes-carrier-chart').getContext('2d');
+    const carrierData = aggregateByCarrier(filteredData, 'minutesChange');
+    const topCarriers = carrierData.slice(0, 10);
+    
+    const labels = topCarriers.map(item => item.carrier);
+    const data = topCarriers.map(item => item.value);
+    const colors = data.map(value => value > 0 ? '#F44336' : value < 0 ? '#2196F3' : '#d3d3d3');
+    
+    if (minutesCarrierChart) minutesCarrierChart.destroy();
+    minutesCarrierChart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels, datasets: [{ label: `Mins Change (${monthNames.month1} to ${monthNames.month2})`, data, backgroundColor: colors, borderColor: colors, borderWidth: 1, borderRadius: 5 }] },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: true, position: 'top', labels: { font: { size: 14 } } }, tooltip: { backgroundColor: 'rgba(0,0,0,0.8)', titleFont: { size: 14 }, bodyFont: { size: 12 }, callbacks: { label: ctx => `Mins Change: ${ctx.parsed.y >= 0 ? '+' : ''}${formatNumber(ctx.parsed.y)}` } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.1)' }, ticks: { font: { size: 12 }, callback: value => formatNumber(value) } }, x: { grid: { display: false }, ticks: { font: { size: 12 }, maxRotation: 45, minRotation: 45 } } }
+        }
+    });
+}
+
+function updateMarginCarrierChart() {
+    const ctx = document.getElementById('margin-carrier-chart').getContext('2d');
+    const carrierData = aggregateByCarrier(filteredData, 'marginChange');
+    const topCarriers = carrierData.slice(0, 10);
+    
+    const labels = topCarriers.map(item => item.carrier);
+    const data = topCarriers.map(item => item.value);
+    const colors = data.map(value => value > 0 ? '#F44336' : value < 0 ? '#2196F3' : '#d3d3d3');
+    
+    if (marginCarrierChart) marginCarrierChart.destroy();
+    marginCarrierChart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels, datasets: [{ label: `Margin Change (${monthNames.month1} to ${monthNames.month2})`, data, backgroundColor: colors, borderColor: colors, borderWidth: 1, borderRadius: 5 }] },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: true, position: 'top', labels: { font: { size: 14 } } }, tooltip: { backgroundColor: 'rgba(0,0,0,0.8)', titleFont: { size: 14 }, bodyFont: { size: 12 }, callbacks: { label: ctx => `Margin Change: $${ctx.parsed.y >= 0 ? '+' : ''}${formatNumber(Math.abs(ctx.parsed.y))}` } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.1)' }, ticks: { font: { size: 12 }, callback: value => '$' + formatNumber(value) } }, x: { grid: { display: false }, ticks: { font: { size: 12 }, maxRotation: 45, minRotation: 45 } } }
+        }
+    });
+}
+
+function updateMinutesZoneChart() {
+    const ctx = document.getElementById('minutes-zone-chart').getContext('2d');
+    const zoneData = aggregateByZone(filteredData, 'minutesChange');
+    const topZones = zoneData.slice(0, 10);
+    
+    const labels = topZones.map(item => item.zone);
+    const data = topZones.map(item => item.value);
+    const colors = data.map(value => value > 0 ? '#F44336' : value < 0 ? '#2196F3' : '#d3d3d3');
+    
+    if (minutesZoneChart) minutesZoneChart.destroy();
+    minutesZoneChart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels, datasets: [{ label: `Mins Change (${monthNames.month1} to ${monthNames.month2})`, data, backgroundColor: colors, borderColor: colors, borderWidth: 1, borderRadius: 5 }] },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: true, position: 'top', labels: { font: { size: 14 } } }, tooltip: { backgroundColor: 'rgba(0,0,0,0.8)', titleFont: { size: 14 }, bodyFont: { size: 12 }, callbacks: { label: ctx => `Mins Change: ${ctx.parsed.y >= 0 ? '+' : ''}${formatNumber(ctx.parsed.y)}` } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.1)' }, ticks: { font: { size: 12 }, callback: value => formatNumber(value) } }, x: { grid: { display: false }, ticks: { font: { size: 12 }, maxRotation: 45, minRotation: 45 } } }
+        }
+    });
+}
+
+function updateMarginZoneChart() {
+    const ctx = document.getElementById('margin-zone-chart').getContext('2d');
+    const zoneData = aggregateByZone(filteredData, 'marginChange');
+    const topZones = zoneData.slice(0, 10);
+    
+    const labels = topZones.map(item => item.zone);
+    const data = topZones.map(item => item.value);
+    const colors = data.map(value => value > 0 ? '#F44336' : value < 0 ? '#2196F3' : '#d3d3d3');
+    
+    if (marginZoneChart) marginZoneChart.destroy();
+    marginZoneChart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels, datasets: [{ label: `Margin Change (${monthNames.month1} to ${monthNames.month2})`, data, backgroundColor: colors, borderColor: colors, borderWidth: 1, borderRadius: 5 }] },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: true, position: 'top', labels: { font: { size: 14 } } }, tooltip: { backgroundColor: 'rgba(0,0,0,0.8)', titleFont: { size: 14 }, bodyFont: { size: 12 }, callbacks: { label: ctx => `Margin Change: $${ctx.parsed.y >= 0 ? '+' : ''}${formatNumber(Math.abs(ctx.parsed.y))}` } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.1)' }, ticks: { font: { size: 12 }, callback: value => '$' + formatNumber(value) } }, x: { grid: { display: false }, ticks: { font: { size: 12 }, maxRotation: 45, minRotation: 45 } } }
+        }
+    });
+}
+
+function aggregateByCarrier(data, field) {
+    const carrierMap = new Map();
+    data.forEach(row => {
+        const carrier = row.carrier;
+        if (carrierMap.has(carrier)) {
+            carrierMap.set(carrier, carrierMap.get(carrier) + row[field]);
+        } else {
+            carrierMap.set(carrier, row[field]);
+        }
+    });
+    return Array.from(carrierMap.entries())
+        .map(([carrier, value]) => ({ carrier, value }))
+        .sort((a, b) => Math.abs(b.value) - Math.abs(a.value));
+}
+
+function aggregateByZone(data, field) {
+    const zoneMap = new Map();
+    data.forEach(row => {
+        const zone = row.routingZone;
+        if (zoneMap.has(zone)) {
+            zoneMap.set(zone, zoneMap.get(zone) + row[field]);
+        } else {
+            zoneMap.set(zone, row[field]);
+        }
+    });
+    return Array.from(zoneMap.entries())
+        .map(([zone, value]) => ({ zone, value }))
+        .sort((a, b) => Math.abs(b.value) - Math.abs(a.value));
+}
+
+function formatNumber(num) { return num % 1 === 0 ? new Intl.NumberFormat().format(Math.round(num)) : num.toFixed(2); }
+function formatChange(num) { const formatted = num % 1 === 0 ? formatNumber(Math.abs(num)) : Math.abs(num).toFixed(2); return num >= 0 ? `+${formatted}` : `-${formatted}`; }
+function formatPercentage(num) { return `${num >= 0 ? '+' : ''}${num.toFixed(1)}%`; }
+function getChangeClass(value) { return value > 0 ? 'positive-change' : value < 0 ? 'negative-change' : 'neutral-change'; }
+function showLoading(show) { loadingOverlay.classList.toggle('hidden', !show); }
+
+function downloadSampleFile() {
+    const sampleData = [
+        { 'Account Manager Name': 'John Doe', 'Carrier': 'TELIA', 'Routing Zone': 'Tajikistan_All', 'Minutes_Jun': 11796, 'Margin_Jun': 590, 'Revenue_Jun': 0.1400 },
+        { 'Account Manager Name': 'Jane Smith', 'Carrier': 'VENTATEL', 'Routing Zone': 'Tajikistan_All', 'Minutes_Jun': 1679, 'Margin_Jun': 7, 'Revenue_Jun': 0.0840 },
+        { 'Account Manager Name': 'John Doe', 'Carrier': 'WANANACHI TELECOM', 'Routing Zone': 'Nigeria_All', 'Minutes_Jun': 13032, 'Margin_Jun': 115, 'Revenue_Jun': 0.0562 },
+        { 'Account Manager Name': 'Alice Brown', 'Carrier': 'CHAT LINK', 'Routing Zone': 'Afg_Roshan_All', 'Minutes_Jun': 109879, 'Margin_Jun': 1648, 'Revenue_Jun': 0.1300 },
+        { 'Account Manager Name': 'John Doe', 'Carrier': 'TELIA', 'Routing Zone': 'Tajikistan_All', 'Minutes_Jul': 57297, 'Margin_Jul': 1719, 'Revenue_Jul': 0.1200 },
+        { 'Account Manager Name': 'Jane Smith', 'Carrier': 'VENTATEL', 'Routing Zone': 'Tajikistan_All', 'Minutes_Jul': 41963, 'Margin_Jul': 2098, 'Revenue_Jul': 0.1400 },
+        { 'Account Manager Name': 'John Doe', 'Carrier': 'WANANACHI TELECOM', 'Routing Zone': 'Nigeria_All', 'Minutes_Jul': 128366, 'Margin_Jul': 834, 'Revenue_Jul': 0.0869 },
+        { 'Account Manager Name': 'Alice Brown', 'Carrier': 'CHAT LINK', 'Routing Zone': 'Spain_All', 'Minutes_Jul': 133015, 'Margin_Jul': 511, 'Revenue_Jul': 0.0136 }
+    ];
+    
+    const ws = XLSX.utils.json_to_sheet(sampleData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'CDR Data');
+    XLSX.writeFile(wb, 'cdr_sample_data.xlsx');
+}
+
+function exportResults() {
+    if (filteredData.length === 0) {
+        alert('No data to export');
+        return;
+    }
+    
+    const exportData = filteredData.map(row => ({
+        'Account Manager': row.accountManager,
+        'Carrier': row.carrier,
+        'Routing Zone': row.routingZone,
+        [`Rated Minutes ${monthNames.month1}`]: row.minutesMonth1,
+        [`Total Margin ${monthNames.month1}`]: row.marginMonth1,
+        [`Rated Min Revenue ${monthNames.month1}`]: row.revenueMonth1,
+        [`Mins Inc/Dec ${monthNames.month2} - ${monthNames.month1}`]: row.minutesChange,
+        [`Mins Inc/Dec % ${monthNames.month2} - ${monthNames.month1}`]: row.minutesChangePercent.toFixed(2) + '%',
+        [`Margin Inc/Dec ${monthNames.month2} - ${monthNames.month1}`]: row.marginChange,
+        [`Rated Minutes ${monthNames.month2}`]: row.minutesMonth2,
+        [`Total Margin ${monthNames.month2}`]: row.marginMonth2,
+        [`Rated Min Revenue ${monthNames.month2}`]: row.revenueMonth2
+    }));
+    
+    const ws = XLSX.utils.json_to_sheet(exportData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'CDR Comparison Results');
+    
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+    XLSX.writeFile(wb, `cdr_comparison_results_${timestamp}.xlsx`);
+}
