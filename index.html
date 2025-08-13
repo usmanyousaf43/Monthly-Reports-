@@ -8,9 +8,124 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .login-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            transform: scale(0.9);
+            animation: bounceIn 0.8s ease-out forwards;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .login-box h2 {
+            margin-bottom: 1.5rem;
+            color: #2a5298;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .login-box p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .login-box input:focus {
+            border-color: #1da1f2;
+            outline: none;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(90deg, #1da1f2, #1e90ff);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .login-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(29, 161, 242, 0.4);
+        }
+        .error {
+            color: #e74c3c;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+        #dashboard {
+            display: none;
+        }
+        .controls {
+            margin-bottom: 2rem; /* Added space below controls */
+        }
+        .summary-cards {
+            margin-top: 2rem; /* Added space above summary cards */
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .card {
+            flex: 1 1 calc(25% - 1rem); /* Adjust to 25% width with gap */
+            min-width: 200px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h2>Login to CDR Dashboard</h2>
+            <p>Developed by Usman Yousaf | Universal Call Limited</p>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+            <div id="error-message" class="error">Invalid username or password</div>
+        </div>
+    </div>
+
+    <div class="container" id="dashboard">
         <div class="header">
             <h1>CDR Comparison Dashboard - Universal Call Limited</h1>
             <p>Developed by Usman Yousaf | Compare Call Detail Records between <span id="month1">Month 1</span> and <span id="month2">Month 2</span></p>
@@ -128,6 +243,33 @@
         </div>
     </div>
 
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const loginContainer = document.getElementById('login-container');
+            const dashboard = document.getElementById('dashboard');
+
+            // Hardcoded credentials (for demo purposes only)
+            const validUsername = 'admin';
+            const validPassword = 'SecurePass2025!';
+
+            if (username === validUsername && password === validPassword) {
+                localStorage.setItem('loggedIn', 'true');
+                loginContainer.style.display = 'none';
+                dashboard.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Check if already logged in
+        if (localStorage.getItem('loggedIn') === 'true') {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
