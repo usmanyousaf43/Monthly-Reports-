@@ -93,17 +93,17 @@
             display: none;
         }
         .controls {
-            margin-bottom: 2rem; /* Added space below controls */
+            margin-bottom: 2rem;
         }
         .summary-cards {
-            margin-top: 2rem; /* Added space above summary cards */
+            margin-top: 2rem;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
         }
         .card {
-            flex: 1 1 calc(25% - 1rem); /* Adjust to 25% width with gap */
+            flex: 1 1 calc(25% - 1rem);
             min-width: 200px;
             background: white;
             padding: 1.5rem;
@@ -256,7 +256,6 @@
             const validPassword = 'SecurePass2025!';
 
             if (username === validUsername && password === validPassword) {
-                localStorage.setItem('loggedIn', 'true');
                 loginContainer.style.display = 'none';
                 dashboard.style.display = 'block';
             } else {
@@ -264,11 +263,10 @@
             }
         }
 
-        // Check if already logged in
-        if (localStorage.getItem('loggedIn') === 'true') {
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
-        }
+        // Ensure login form is shown on every page load
+        document.getElementById('login-container').style.display = 'flex';
+        document.getElementById('dashboard').style.display = 'none';
+        localStorage.removeItem('loggedIn'); // Remove any existing login state
     </script>
     <script src="script.js"></script>
 </body>
